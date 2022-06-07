@@ -14,10 +14,10 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   // Directly returns a tie if the selection are the same
   if (playerSelection == computerSelection) {
-    console.log( "It's a tie!");
+    console.log("It's a tie!");
     return 'tie';
   }
-  
+
   // Checks to see who won
   if ((playerSelection == Values.ROCK) && (computerSelection == Values.SCISSOR)
     || (playerSelection == Values.SCISSOR) && (computerSelection == Values.PAPER)
