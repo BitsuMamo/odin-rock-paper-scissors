@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Converts input into enum value
-function playerPlay(input) {
+function playerInputConvert(input) {
   if (input.toLowerCase() == "r") {
     return Values.ROCK;
   }
@@ -55,7 +55,7 @@ function game() {
   while (gamesPlayed < 5) {
     let input = prompt("R: rock, P: paper, S: scissor");
 
-    const playerSelection = playerPlay(input);
+    const playerSelection = playerInputConvert(input);
     const computerSelection = computerPlay();
 
     const status = playRound(playerSelection, computerSelection);
