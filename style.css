@@ -1,0 +1,99 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  border: 1px solid black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+}
+
+.score-container{
+  border: 1px solid black;
+  width: 50%;
+  height: 5vh;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.score{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.display-container{
+  border: 1px solid black;
+  width: 50%;
+  height: 25vh;
+  padding: 10px;
+  display: flex;
+  align-items:center;
+  justify-content: space-evenly;
+}
+
+.display{
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.display img{
+  width:100%;
+  height: auto;
+}
+
+.input{
+  border: 1px solid black;
+  margin-top: 2rem;
+  width: 50%;
+  height: 15vh;
+  display: flex;
+  align-items:center;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.input-button{
+  border: 1px solid black;
+  width:100%;
+  height: 100%;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.input-button img{
+ width: 100%;
+ height: auto;
+}
+
+.input-button button{
+  width: inherit;
+  height: inherit;
+  background-color: transparent;
+  border: none;
+}
+
+.input-button button:hover{
+  width: inherit;
+  height: inherit;
+  background-color: lightblue;
+  border: none;
+}
