@@ -5,10 +5,41 @@ const Values = {
   SCISSOR: "scissor",
 }
 
+const playerScoreElement = document.getElementById("player-score");
+const computerScoreElement = document.getElementById("computer-score");
+
+const playerRockImage = document.getElementById("player-rock-image");
+const playerPaperImage = document.getElementById("player-paper-image");
+const playerScissorImage = document.getElementById("player-scissor-image");
+
+const computerRockImage = document.getElementById("computer-rock-image");
+const computerPaperImage = document.getElementById("computer-paper-image");
+const computerScissorImage = document.getElementById("computer-scissor-image");
+
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorBtn = document.getElementById("scissor-btn");
+
+function initializeElements() {
+  playerScoreElement.textContent = 0;
+  computerScoreElement.textContent = 0;
+
+  playerRockImage.classList.remove('active');
+  playerPaperImage.classList.remove('active');
+  playerScissorImage.classList.remove('active');
+
+  computerRockImage.classList.remove('active');
+  computerPaperImage.classList.remove('active');
+  computerScissorImage.classList.remove('active');
+}
+
+
 // Randomly return an enum value
 function computerPlay() {
   var keys = Object.keys(Values);
-  return Values[keys[keys.length * Math.random() << 0]];
+  let val = Values[keys[keys.length * Math.random() << 0]];
+  toggleDisplay(val, 'computer');
+  return val;
 };
 
 function playRound(playerSelection, computerSelection) {
@@ -45,14 +76,60 @@ function playerInputConvert(input) {
   return undefined;
 }
 
+function toggleDisplay(selection, display){
+  if(display == "player"){
+    switch(selection){
+      case Values.ROCK:
+        playerRockImage.classList.add('active')
+        playerScissorImage.classList.remove('active')
+        playerPaperImage.classList.remove('active')
+        break;
+      case Values.PAPER:
+        playerRockImage.classList.remove('active')
+        playerScissorImage.classList.remove('active')
+        playerPaperImage.classList.add('active')
+        break;
+      case Values.SCISSOR:
+        playerRockImage.classList.remove('active')
+        playerScissorImage.classList.add('active')
+        playerPaperImage.classList.remove('active')
+        break;
+    }
+  }else{
+    switch(selection){
+      case Values.ROCK:
+        computerRockImage.classList.add('active')
+        computerScissorImage.classList.remove('active')
+        computerPaperImage.classList.remove('active')
+        break;
+      case Values.PAPER:
+        computerRockImage.classList.remove('active')
+        computerScissorImage.classList.remove('active')
+        computerPaperImage.classList.add('active')
+        break;
+      case Values.SCISSOR:
+        computerRockImage.classList.remove('active')
+        computerScissorImage.classList.add('active')
+        computerPaperImage.classList.remove('active')
+        break;
+    }
+
+  }
+}
+
+function refreshScore(playerScore, computerScore){
+  playerScoreElement.textContent = playerScore;
+  computerScoreElement.textContent = computerScore;
+}
+
 // Main game loop 
 function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+  let playerScore = 3;
+  let computerScore = 1;
   let gamesPlayed = 0;
 
 
-  while (gamesPlayed < 5) {
+  /* while (gamesPlayed < 5) {
     let input = prompt("R: rock, P: paper, S: scissor");
 
     const playerSelection = playerInputConvert(input);
@@ -77,10 +154,24 @@ function game() {
   } else {
     console.log("It's a tie!");
     alert("It's a tie!");
-  }
+  } */
 
+  rockBtn.addEventListener('click', () => {
+    status = playRound(Values.ROCK, computerPlay());
+    toggleDisplay(Values.ROCK, 'player');
+  })
+  paperBtn.addEventListener('click', () => {
+    status = playRound(Values.PAPER, computerPlay());
+    toggleDisplay(Values.PAPER, 'player');
+  })
+  scissorBtn.addEventListener('click', () => {
+    status = playRound(Values.SCISSOR, computerPlay());
+    toggleDisplay(Values.SCISSOR, 'player');
+  })
+
+  refreshScore(playerScore, computerScore);
 }
 
+
+initializeElements();
 game();
-
-
