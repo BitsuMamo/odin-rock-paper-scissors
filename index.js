@@ -5,6 +5,10 @@ const Values = {
   SCISSOR: "scissor",
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
+// DOM elements
 const playerScoreElement = document.getElementById("player-score");
 const computerScoreElement = document.getElementById("computer-score");
 
@@ -117,59 +121,36 @@ function toggleDisplay(selection, display){
   }
 }
 
-function refreshScore(playerScore, computerScore){
+function refreshScore(winner){
+  if(winner == 'player'){
+    playerScore++;
+  }
+  if(winner == 'computer'){
+    computerScore++;
+  }
+  
   playerScoreElement.textContent = playerScore;
   computerScoreElement.textContent = computerScore;
 }
 
 // Main game loop 
 function game() {
-  let playerScore = 3;
-  let computerScore = 1;
-  let gamesPlayed = 0;
-
-
-  /* while (gamesPlayed < 5) {
-    let input = prompt("R: rock, P: paper, S: scissor");
-
-    const playerSelection = playerInputConvert(input);
-    const computerSelection = computerPlay();
-
-    const status = playRound(playerSelection, computerSelection);
-    if (status == 'player') {
-      playerScore++;
-    }
-    if (status == 'computer') {
-      computerScore++;
-    }
-    gamesPlayed++;
-  }
-
-  if (playerScore > computerScore) {
-    console.log(`The winner is the player with a score of ${playerScore}:${computerScore}!`);
-    alert(`The winner is the player with a score of ${playerScore}:${computerScore}!`);
-  } else if (computerScore > playerScore) {
-    console.log(`The winner is the computer with a score of ${computerScore}:${playerScore}!`);
-    alert(`The winner is the computer with a score of ${computerScore}:${playerScore}!`);
-  } else {
-    console.log("It's a tie!");
-    alert("It's a tie!");
-  } */
-
   rockBtn.addEventListener('click', () => {
-    status = playRound(Values.ROCK, computerPlay());
+    let winner = playRound(Values.ROCK, computerPlay());
+    refreshScore(winner);
     toggleDisplay(Values.ROCK, 'player');
   })
   paperBtn.addEventListener('click', () => {
-    status = playRound(Values.PAPER, computerPlay());
+    let winner = playRound(Values.PAPER, computerPlay());
+    refreshScore(winner);
     toggleDisplay(Values.PAPER, 'player');
   })
   scissorBtn.addEventListener('click', () => {
-    status = playRound(Values.SCISSOR, computerPlay());
+    let winner = playRound(Values.SCISSOR, computerPlay());
+    refreshScore(winner);
     toggleDisplay(Values.SCISSOR, 'player');
   })
 
-  refreshScore(playerScore, computerScore);
 }
 
 
