@@ -23,6 +23,7 @@ const computerScissorImage = document.getElementById("computer-scissor-image");
 const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorBtn = document.getElementById("scissor-btn");
+const resetBtn = document.getElementById("reset-btn");
 
 function initializeGame() {
   playerScore = 0;
@@ -139,6 +140,10 @@ function game() {
     refreshScore(winner);
     toggleDisplay(Values.SCISSOR, 'player');
   })
+  resetBtn.addEventListener('click', () => {
+    initializeGame();
+  })
+
 }
 
 initializeGame();
