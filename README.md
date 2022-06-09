@@ -1,3 +1,4 @@
 # odin-rock-paper-scissors
 
-## Currently just CLI version. It is playable in the browsers console.
+## A full GIU based rock-paper-scissors game developed with Javascript, HTML, and CSS. You are able to play with the computer.
+

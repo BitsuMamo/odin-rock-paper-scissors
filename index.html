@@ -5,11 +5,59 @@
   <title>Rock Paper Sciccors</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="index.js">
+  <link rel="stylesheet" type="" href="style.css">
+  <script src="index.js" defer>
   </script>
 </head>
 
 <body>
+
+  <div class="container">
+    <div class="score-container">
+      <div class="score" id="player-score">
+        p
+      </div>
+      <div class="score" id="computer-score">
+        c
+      </div>
+    </div>
+    <div class="display-container">
+      <div class="display" id="player-display">
+        <img src="asset/Rock.png" alt="rock image" class="active" id="player-rock-image">
+        <img src="asset/Paper.png" alt="paper image" id="player-paper-image">
+        <img src="asset/Scissor.png" alt="scissor image" id="player-scissor-image">
+      </div>
+      <div class="display" id="computer-display">
+        <img src="asset/Rock.png" alt="rock image" class="active" id="computer-rock-image">
+        <img src="asset/Paper.png" alt="paper image" id="computer-paper-image">
+        <img src="asset/Scissor.png" alt="scissor image" id="computer-scissor-image">
+      </div>
+    </div>
+
+    <div class="input">
+      <div class="input-button">
+        <button type="" id="rock-btn">
+          <img src="asset/Rock.png" alt="rock image">
+        </button>
+      </div>
+      <div class="input-button">
+        <button type="" id="paper-btn">
+          <img src="asset/Paper.png" alt="paper image">
+        </button>
+      </div>
+      <div class="input-button">
+        <button type="" id="scissor-btn">
+          <img src="asset/Scissor.png" alt="scissor image">
+        </button>
+      </div>
+    </div>
+
+    <div class="reset">
+      <button type="" id="reset-btn">
+        <img src="asset/Reset.png" alt="reset image">
+      </button>
+    </div>
+  </div>
 
 </body>
 
