@@ -7,6 +7,7 @@ const Values = {
 
 let playerScore = 0;
 let computerScore = 0;
+let gamesPlayed = 0;
 
 // DOM elements
 const playerScoreElement = document.getElementById("player-score");
@@ -28,6 +29,7 @@ const resetBtn = document.getElementById("reset-btn");
 function initializeGame() {
   playerScore = 0;
   computerScore = 0;
+  gamesPlayed = 0;
 
   playerScoreElement.textContent = 0;
   computerScoreElement.textContent = 0;
@@ -112,6 +114,7 @@ function toggleDisplay(selection, display) {
 }
 
 function refreshScore(winner) {
+
   if (winner == 'player') {
     playerScore++;
   }
@@ -119,26 +122,41 @@ function refreshScore(winner) {
     computerScore++;
   }
 
+  let msg = ``;
+
+  if (gamesPlayed == 5) {
+    if (playerScore > computerScore) {
+      msg = `PLAYER WON!!`;
+    } else if (playerScore < computerScore) {
+      msg = `COMPUTER WON!!`;
+    } else {
+      msg = `IT'S A TIE!!`;
+    }
+    alert(msg);
+    initializeGame();
+  }
+
   playerScoreElement.textContent = playerScore;
   computerScoreElement.textContent = computerScore;
+  gamesPlayed++;
 }
 
 // Main game loop 
 function game() {
   rockBtn.addEventListener('click', () => {
     let winner = playRound(Values.ROCK, computerPlay());
-    refreshScore(winner);
     toggleDisplay(Values.ROCK, 'player');
+    refreshScore(winner);
   })
   paperBtn.addEventListener('click', () => {
     let winner = playRound(Values.PAPER, computerPlay());
-    refreshScore(winner);
     toggleDisplay(Values.PAPER, 'player');
+    refreshScore(winner);
   })
   scissorBtn.addEventListener('click', () => {
     let winner = playRound(Values.SCISSOR, computerPlay());
-    refreshScore(winner);
     toggleDisplay(Values.SCISSOR, 'player');
+    refreshScore(winner);
   })
   resetBtn.addEventListener('click', () => {
     initializeGame();
