@@ -24,7 +24,10 @@ const rockBtn = document.getElementById("rock-btn");
 const paperBtn = document.getElementById("paper-btn");
 const scissorBtn = document.getElementById("scissor-btn");
 
-function initializeElements() {
+function initializeGame() {
+  playerScore = 0;
+  computerScore = 0;
+
   playerScoreElement.textContent = 0;
   computerScoreElement.textContent = 0;
 
@@ -35,7 +38,7 @@ function initializeElements() {
   computerRockImage.classList.remove('active');
   computerPaperImage.classList.remove('active');
   computerScissorImage.classList.remove('active');
-}
+};
 
 
 // Randomly return an enum value
@@ -66,23 +69,9 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-// Converts input into enum value
-function playerInputConvert(input) {
-  if (input.toLowerCase() == "r") {
-    return Values.ROCK;
-  }
-  if (input.toLowerCase() == "s") {
-    return Values.SCISSOR;
-  }
-  if (input.toLowerCase() == "p") {
-    return Values.PAPER;
-  }
-  return undefined;
-}
-
-function toggleDisplay(selection, display){
-  if(display == "player"){
-    switch(selection){
+function toggleDisplay(selection, display) {
+  if (display == "player") {
+    switch (selection) {
       case Values.ROCK:
         playerRockImage.classList.add('active')
         playerScissorImage.classList.remove('active')
@@ -99,8 +88,8 @@ function toggleDisplay(selection, display){
         playerPaperImage.classList.remove('active')
         break;
     }
-  }else{
-    switch(selection){
+  } else {
+    switch (selection) {
       case Values.ROCK:
         computerRockImage.classList.add('active')
         computerScissorImage.classList.remove('active')
@@ -121,14 +110,14 @@ function toggleDisplay(selection, display){
   }
 }
 
-function refreshScore(winner){
-  if(winner == 'player'){
+function refreshScore(winner) {
+  if (winner == 'player') {
     playerScore++;
   }
-  if(winner == 'computer'){
+  if (winner == 'computer') {
     computerScore++;
   }
-  
+
   playerScoreElement.textContent = playerScore;
   computerScoreElement.textContent = computerScore;
 }
@@ -150,9 +139,7 @@ function game() {
     refreshScore(winner);
     toggleDisplay(Values.SCISSOR, 'player');
   })
-
 }
 
-
-initializeElements();
+initializeGame();
 game();
